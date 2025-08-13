@@ -43,7 +43,7 @@ export async function fileExists(filePath: string): Promise<boolean> {
 }
 
 export async function ensureDrizzleConfig(resolver: Resolver) {
-  const path = resolver.resolve('./drizzle.config.ts')
+  const path = resolver.resolve('../drizzle.config.ts')
 
   const exists = await fileExists(path)
 
@@ -55,7 +55,7 @@ export async function ensureDrizzleConfig(resolver: Resolver) {
 }
 
 export async function ensureAuthFile(resolver: Resolver) {
-  const path = resolver.resolve('./lib/auth.ts')
+  const path = resolver.resolve('../lib/auth.ts')
 
   const exists = await fileExists(path)
 
@@ -63,13 +63,13 @@ export async function ensureAuthFile(resolver: Resolver) {
     return
   }
 
-  await fs.mkdir(resolver.resolve('./lib'), { recursive: true })
+  await fs.mkdir(resolver.resolve('../lib'), { recursive: true })
 
-  await fs.writeFile(resolver.resolve('./lib/auth.ts'), AUTH_CLI_FILE, 'utf-8')
+  await fs.writeFile(resolver.resolve('../lib/auth.ts'), AUTH_CLI_FILE, 'utf-8')
 }
 
 export async function ensureAuthSchemaFile(resolver: Resolver) {
-  const path = resolver.resolve('./db/schemas/auth.ts')
+  const path = resolver.resolve('../db/schemas/auth.ts')
 
   const exists = await fileExists(path)
 
@@ -83,7 +83,7 @@ export async function ensureAuthSchemaFile(resolver: Resolver) {
 }
 
 export async function ensureAppSchemaFile(resolver: Resolver) {
-  const path = resolver.resolve('./db/schemas/app.ts')
+  const path = resolver.resolve('../db/schemas/app.ts')
 
   const exists = await fileExists(path)
 
@@ -95,7 +95,7 @@ export async function ensureAppSchemaFile(resolver: Resolver) {
 }
 
 export async function ensureSchemaFiles(resolver: Resolver) {
-  const path = resolver.resolve('./db/schemas/index.ts')
+  const path = resolver.resolve('../db/schemas/index.ts')
 
   const exists = await fileExists(path)
 
@@ -103,7 +103,7 @@ export async function ensureSchemaFiles(resolver: Resolver) {
     return
   }
 
-  await fs.mkdir(resolver.resolve('./db/schemas'), { recursive: true })
+  await fs.mkdir(resolver.resolve('../db/schemas'), { recursive: true })
 
   await Promise.all([
     fs.writeFile(path, `export * from './auth'
@@ -157,7 +157,7 @@ export function ensureTypesDeclarations() {
 }
 
 export async function ensureAuthConfigFile(resolver: Resolver) {
-  const path = resolver.resolve('./auth/config.ts')
+  const path = resolver.resolve('../auth/config.ts')
 
   const exists = await fileExists(path)
 
@@ -165,7 +165,7 @@ export async function ensureAuthConfigFile(resolver: Resolver) {
     return
   }
 
-  await fs.mkdir(resolver.resolve('./auth'), { recursive: true })
+  await fs.mkdir(resolver.resolve('../auth'), { recursive: true })
 
   fs.writeFile(path, AUTH_CONFIG_FILE, 'utf-8')
 }
