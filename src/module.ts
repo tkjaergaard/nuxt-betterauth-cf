@@ -17,7 +17,13 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup(_options, _nuxt) {
     const resolver = createResolver(import.meta.url)
-    const rootResolver = createResolver(_nuxt.options.vite.root!)
+    const ROOT_PATH = _nuxt.options.vite.root!
+
+    let rootResolver = createResolver(ROOT_PATH)
+
+    if (rootResolver.resolve('.').endsWith('app')) {
+      rootResolver = createResolver(rootResolver.resolve('./..'))
+    }
 
     _nuxt.options.alias ??= {}
     _nuxt.options.alias['#auth/config'] = rootResolver.resolve('./auth/config')
