@@ -1,0 +1,9 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "nuxt-betterauth-cf/auth": ["../src/runtime/server/utils/auth.ts"],
+      "nuxt-betterauth-cf/config": ["../src/config.ts"],
+    }
+  }
+}

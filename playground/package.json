@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "my-module-playground",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate",
+    "db:generate": "pnpm drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply mock --local",
+    "auth:generate": "pnpx @better-auth/cli generate --output ./db/schemas/auth.ts && pnpx prettier -w ./db/schemas/auth.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.4",
+    "nuxt": "^4.0.3"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}

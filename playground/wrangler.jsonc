@@ -1,0 +1,31 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+  "name": "playground",
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2025-07-15",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./public"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mock",
+      "database_id": "c037323a-6a21-4f7d-a4d2-fe0b6b7ccc6b",
+      "migrations_dir": "./db/migrations"
+    }
+  ],
+
+  "kv_namespaces": [
+    {
+      "binding": "KV_BETTERAUTH",
+      "id": "b6105150c6f04898aa1e92a56769cdf2"
+    }
+  ]
+}
