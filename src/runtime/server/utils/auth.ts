@@ -6,7 +6,7 @@ import { getRequestURL } from 'h3'
 import { useDB } from './db'
 import defu from 'defu'
 
-export function useAuth(DB: D1Database, KV: KVNamespace, options: Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'> = {}) {
+export function useAuth(DB: D1Database, KV: KVNamespace, options: Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'> = {}): ReturnType<typeof betterAuth> {
   const db = useDB(DB)
 
   const config = defu(options, { emailAndPassword: {

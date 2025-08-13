@@ -11,10 +11,10 @@
       "import": "./dist/module.mjs"
     },
     "./auth": {
-      "import": "./dist/runtime/server/utils/auth.mjs"
+      "import": "./dist/runtime/server/utils/auth.js"
     },
     "./config": {
-      "import": "./dist/runtime/server/utils/config.mjs"
+      "import": "./dist/runtime/config.js"
     }
   },
   "main": "./dist/module.mjs",

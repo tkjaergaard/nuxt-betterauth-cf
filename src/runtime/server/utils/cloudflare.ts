@@ -35,7 +35,7 @@ export function getCloudflareBindings(event: H3Event): CloudflareBindings {
   return { DB, KV: KV_BETTERAUTH }
 }
 
-export function useAuthServer(event: H3Event) {
+export function useAuthServer(event: H3Event): ReturnType<typeof useAuth> {
   const { DB, KV } = getCloudflareBindings(event)
 
   return useAuth(DB, KV, config)

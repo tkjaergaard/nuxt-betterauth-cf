@@ -21,11 +21,11 @@ export default defineNuxtModule<ModuleOptions>({
 
     _nuxt.options.alias ??= {}
     _nuxt.options.alias['#auth/config'] = rootResolver.resolve('./auth/config')
-    _nuxt.options.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./config')
+    _nuxt.options.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./runtime/config')
 
     _nuxt.options.nitro.alias ??= {}
     _nuxt.options.nitro.alias['#auth/config'] = rootResolver.resolve('./auth/config')
-    _nuxt.options.nitro.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./config')
+    _nuxt.options.nitro.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./runtime/config')
 
     _nuxt.hook('modules:done', async () => {
       if (_nuxt.options._prepare) {
