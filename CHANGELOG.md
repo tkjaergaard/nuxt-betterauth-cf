@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v1.0.7
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.6...v1.0.7)
+
+### 🩹 Fixes
+
+- Server auth ([9fba0ef](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/9fba0ef))
+
+### 🏡 Chore
+
+- Update readme ([5416438](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/5416438))
+- Clarify importants of exports in readme ([421bf62](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/421bf62))
+- Indicate in docs to use app name from wrangler.jsonc ([37ed7a1](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/37ed7a1))
+- Add credits to readme ([b9fbd43](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/b9fbd43))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.6
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.5...v1.0.6)
