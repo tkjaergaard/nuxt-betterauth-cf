@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.5
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.4...v1.0.5)
+
+### 🏡 Chore
+
+- Refactor and work around having to use jiti ([654f5e1](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/654f5e1))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.4
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.3...v1.0.4)
