@@ -24,7 +24,7 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add nuxt-betterauth-cf
 ```
 
-Install Drizzle and Drizzle Kit
+Install the dependencies in your project.
 ```bash
 pnpm add -D drizzle-kit wrangler @cloudflare/workers-types
 pnpm add drizzle-kit better-auth
@@ -63,11 +63,51 @@ The module automatically creates these files in your project:
     └── auth.ts
 ```
 
-## Composables
+## Configuration
+The module is somewhat opinionated in terms of how Cloudflare D1 and Cloudflare KV is integrated.
+To setup modules, hooks etc. for Better Auth, go to the `auth/config.ts` file.
 
-### useAuth
+From here you can centrally manage your server- and client side configuration.
+
+```ts
+import { defineAuthConfig, defineAuthClientConfig } from 'nuxt-betterauth-cf/config'
+import { username } from "better-auth/plugins"
+import { usernameClient } from "better-auth/client/plugins"
+
+export const config = defineAuthConfig({
+  plugins: [username()]
+})
+
+export const client = defineAuthClientConfig({
+  plugins: [usernameClient()]
+})
+```
+
+## Composables
+This module comes with a `useAuth` composable for easy interaction with Better Auth.
+Please infer the return type to see the different helpers provided by the composable.
+You can always access the raw Better Auth client through `.client`.
+
 ```vue
 <script setup lang="ts">
-const auth = useAuth()
+  const auth = useAuth()
+
+  const client = auth.client // Maps to the raw Better Auth client
 </script>
+```
+
+## Server routes
+
+This module automatically adds the api endpoint required by Better Auth.
+If you want to setup protected routes you can use the `defineAuthenticatedEventHandler`.
+
+It's auto-imported for you and works the same as `defineEventHandler` with the difference that it checks for a valid Better Auth session or throws and error.
+
+The current session and Better Auth instance is provided through the `event.context`.
+
+```ts
+export default defineAuthenticatedEventHandler(async (event) => {
+  const session = event.context.session // The current session
+  const auth = event.context.auth // The Better Auth instance
+})
 ```
