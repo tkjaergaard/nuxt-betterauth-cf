@@ -113,3 +113,7 @@ export default defineAuthenticatedEventHandler(async (event) => {
   const auth = event.context.auth // The Better Auth instance
 })
 ```
+
+## Credits
+
+Inspired by [atinux/nuxthub-better-auth](https://github.com/atinux/nuxthub-better-auth/tree/main)
