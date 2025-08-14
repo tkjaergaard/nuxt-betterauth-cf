@@ -69,6 +69,8 @@ To setup modules, hooks etc. for Better Auth, go to the `auth/config.ts` file.
 
 From here you can centrally manage your server- and client side configuration.
 
+It's important that the file exports a `config` and `client`.
+
 ```ts
 import { defineAuthConfig, defineAuthClientConfig } from 'nuxt-betterauth-cf/config'
 import { username } from "better-auth/plugins"
