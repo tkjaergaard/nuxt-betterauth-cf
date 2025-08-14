@@ -26,8 +26,8 @@ npx nuxi module add nuxt-betterauth-cf
 
 Install Drizzle and Drizzle Kit
 ```bash
-pnpm add -D drizzle-kit
-pnpm add drizzle-kit
+pnpm add -D drizzle-kit wrangler @cloudflare/workers-types
+pnpm add drizzle-kit better-auth
 ````
 
 Add this to your package.json file
