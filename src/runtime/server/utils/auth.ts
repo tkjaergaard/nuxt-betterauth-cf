@@ -6,8 +6,8 @@ import { drizzle } from 'drizzle-orm/d1'
 import { getRequestURL } from 'h3'
 import { useEvent } from 'nitropack/runtime/context'
 
-export function useAuth(DB: D1Database, KV: KVNamespace, options: Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'> = {}): ReturnType<typeof betterAuth> {
-  const db = useDB(DB)
+export function useAuth<T extends Record<string, unknown> | undefined>(DB: D1Database, KV: KVNamespace, options: Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'> = {}, schemas?: T): ReturnType<typeof betterAuth> {
+  const db = useDB(DB, schemas)
 
   const config = defu(options, { emailAndPassword: {
     enabled: true,
