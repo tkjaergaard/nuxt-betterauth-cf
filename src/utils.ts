@@ -12,11 +12,24 @@ export default defineConfig({
 `
 
 const AUTH_CLI_FILE = `/**
+/**
  * This file is only intended for generating the auth schema.
  * It is not intended for use in your application.
  */
 
-import { useAuth } from 'nuxt-betterauth-cf/auth'
+import { createJiti } from 'jiti'
+import { createResolve } from "mlly";
+
+const _resolve = createResolve({ url: import.meta.url });
+
+const jiti = createJiti(import.meta.url, {
+  debug: true,
+  alias: {
+    '#auth/config': await _resolve("../auth/config.ts"),
+  }
+});
+
+const { useAuth } = await jiti.import('nuxt-betterauth-cf/auth') as { useAuth: typeof import('nuxt-betterauth-cf/auth').useAuth }
 
 import type {
   D1Database,
