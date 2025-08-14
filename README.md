@@ -37,7 +37,7 @@ Add this to your package.json file
   "scripts": {
     // ...
     "db:generate": "pnpm drizzle-kit generate",
-    "db:migrate": "wrangler d1 migrations apply mock --local",
+    "db:migrate": "wrangler d1 migrations apply <your app name> --local",
     "auth:generate": "pnpx @better-auth/cli generate --output ./db/schemas/auth.ts"
   }
 }
