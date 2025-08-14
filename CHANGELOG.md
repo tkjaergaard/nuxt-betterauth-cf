@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.4
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.3...v1.0.4)
+
+### 🏡 Chore
+
+- Add jiti reolver to auth.ts to resolve paths correctly ([95f68ac](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/95f68ac))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.3
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.2...v1.0.3)
