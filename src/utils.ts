@@ -23,7 +23,6 @@ import { createResolve } from "mlly";
 const _resolve = createResolve({ url: import.meta.url });
 
 const jiti = createJiti(import.meta.url, {
-  debug: true,
   alias: {
     '#auth/config': await _resolve("../auth/config.ts"),
   }

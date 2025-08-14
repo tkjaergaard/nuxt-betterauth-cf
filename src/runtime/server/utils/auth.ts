@@ -1,10 +1,10 @@
-import { useEvent } from 'nitropack/runtime/context'
 import type { D1Database, KVNamespace } from '@cloudflare/workers-types'
 import { betterAuth, type BetterAuthOptions } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { getRequestURL } from 'h3'
-import { useDB } from './db'
 import defu from 'defu'
+import { drizzle } from 'drizzle-orm/d1'
+import { getRequestURL } from 'h3'
+import { useEvent } from 'nitropack/runtime/context'
 
 export function useAuth(DB: D1Database, KV: KVNamespace, options: Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'> = {}): ReturnType<typeof betterAuth> {
   const db = useDB(DB)
@@ -28,6 +28,13 @@ export function useAuth(DB: D1Database, KV: KVNamespace, options: Omit<BetterAut
   })
 
   return auth
+}
+
+export function useDB<T extends Record<string, unknown> | undefined>(
+  DB: D1Database,
+  schemas?: T,
+) {
+  return drizzle<NonNullable<T>>(DB, { schema: schemas })
 }
 
 export function getBaseURL() {
