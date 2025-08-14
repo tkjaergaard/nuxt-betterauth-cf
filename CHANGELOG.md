@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.6
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.5...v1.0.6)
+
+### 🏡 Chore
+
+- Update lib/auth.ts to match new pattern and update readme ([bde81ce](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/bde81ce))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.5
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.4...v1.0.5)
