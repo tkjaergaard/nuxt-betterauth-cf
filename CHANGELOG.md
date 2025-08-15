@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.8
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.7...v1.0.8)
+
+### 🩹 Fixes
+
+- Fetch session at the right time to ensure correct states in middleware ([c255f28](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/c255f28))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.7
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.6...v1.0.7)
