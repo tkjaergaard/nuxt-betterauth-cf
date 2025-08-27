@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.9
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.8...v1.0.9)
+
+### 🏡 Chore
+
+- **release:** V1.0.8 ([1b83699](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/1b83699))
+- Add client config ([4cd1c89](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/4cd1c89))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.8
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.7...v1.0.8)
