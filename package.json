@@ -1,6 +1,6 @@
 {
   "name": "nuxt-betterauth-cf",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Nuxt, Better Auth and Cloudflare 🔥",
   "repository": "https://github.com/tkjaergaard/nuxt-betterauth-cf",
   "license": "MIT",
