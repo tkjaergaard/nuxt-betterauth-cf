@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.11
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.10...v1.0.11)
+
+### 🏡 Chore
+
+- Revert ([c4d065f](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/c4d065f))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.10
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.9...v1.0.10)
