@@ -13,9 +13,6 @@ import type {
   RouteLocationRaw,
 } from 'vue-router'
 
-// @ts-expect-error Imported by nuxt
-import { client as clientConfig } from '#auth/config'
-
 interface RuntimeAuthConfig {
   redirectUserTo: RouteLocationRaw | string
   redirectGuestTo: RouteLocationRaw | string
@@ -31,7 +28,6 @@ export function useAuth() {
     fetchOptions: {
       headers,
     },
-    ...clientConfig,
   })
 
   const options = defu(
@@ -65,7 +61,6 @@ export function useAuth() {
 
     // eslint-disable-next-line no-async-promise-executor
     const promise = new Promise<void>(async (resolve) => {
-      // @ts-expect-error headers can be undefined
       const { data } = await client.getSession({
         fetchOptions: {
           headers,
