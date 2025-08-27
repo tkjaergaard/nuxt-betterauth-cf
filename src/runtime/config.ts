@@ -1,13 +1,14 @@
 import type { BetterAuthOptions, ClientOptions } from 'better-auth'
 
-type AuthConfig = Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'>
+export type AuthConfig = Omit<BetterAuthOptions, 'database' | 'secondaryStorage' | 'baseURL'>
 
-type AuthClientConfig = ClientOptions
+export type AuthClientConfig = Partial<Omit<ClientOptions, 'fetchOptions'
+  | 'disableDefaultFetchPlugins' | '$InferAuth'>>
 
-export function defineAuthConfig(config: AuthConfig = {}) {
+export function defineAuthConfig<T extends AuthConfig>(config: T) {
   return config
 }
 
-export function defineAuthClientConfig(config: AuthClientConfig = {}) {
+export function defineAuthClientConfig<T extends AuthClientConfig>(config: T) {
   return config
 }

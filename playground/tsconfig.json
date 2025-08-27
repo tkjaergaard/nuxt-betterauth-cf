@@ -4,6 +4,7 @@
     "paths": {
       "nuxt-betterauth-cf/auth": ["../src/runtime/server/utils/auth.ts"],
       "nuxt-betterauth-cf/config": ["../src/runtime/config.ts"],
+      "#auth/config": ["./auth/config.ts"],
     }
   }
 }
