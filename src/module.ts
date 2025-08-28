@@ -1,4 +1,4 @@
-import { addImportsDir, addServerScanDir, createResolver, defineNuxtModule, installModule, addRouteMiddleware, hasNuxtModule } from '@nuxt/kit'
+import { addImportsDir, addServerScanDir, createResolver, defineNuxtModule, installModule, addRouteMiddleware, hasNuxtModule, addImports } from '@nuxt/kit'
 import { ensureAuthConfigFile, ensureAuthFile, ensureDrizzleConfig, ensureSchemaFiles, ensureTypesDeclarations } from './utils'
 
 // Module options TypeScript interface definition
@@ -52,6 +52,14 @@ export default defineNuxtModule<ModuleOptions>({
 
     addServerScanDir(resolver.resolve('./runtime/server'))
     addImportsDir(resolver.resolve('./runtime/app/composables'))
+
+    const configFile = rootResolver.resolve('./auth/config')
+
+    addImports([{
+      name: 'client',
+      from: configFile,
+      as: 'authClientConfig',
+    }])
 
     if (_options.middleware) {
       addRouteMiddleware({

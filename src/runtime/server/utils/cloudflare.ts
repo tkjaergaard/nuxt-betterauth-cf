@@ -4,7 +4,7 @@ import { createError, type H3Event,
   type EventHandlerRequest,
   type H3EventContext,
   defineEventHandler } from 'h3'
-import { useAuth } from './auth'
+import { createAuthClientServer } from './auth'
 // @ts-expect-error The alias is created by nuxt.
 import * as schemas from '#auth/schemas'
 // @ts-expect-error The alias is created by nuxt.
@@ -37,10 +37,10 @@ export function getCloudflareBindings(event: H3Event): CloudflareBindings {
   return { DB, KV: KV_BETTERAUTH }
 }
 
-export function useAuthServer(event: H3Event): ReturnType<typeof useAuth> {
+export function useAuthServer(event: H3Event): ReturnType<typeof createAuthClientServer> {
   const { DB, KV } = getCloudflareBindings(event)
 
-  return useAuth(DB, KV, config, schemas)
+  return createAuthClientServer(DB, KV, config, schemas)
 }
 
 interface AuthenticatedH3Event extends H3Event {

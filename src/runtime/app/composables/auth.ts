@@ -1,10 +1,11 @@
-import { navigateTo, useRequestHeaders, useRequestURL, useRuntimeConfig, useState } from '#app'
+import { navigateTo, useRequestHeaders, useRuntimeConfig, useState } from '#app'
 import type {
   ClientOptions,
   InferSessionFromClient,
   InferUserFromClient,
 } from 'better-auth/client'
 import { createAuthClient } from 'better-auth/client'
+import { useAuthConfig } from './useAuthConfig'
 
 import { defu } from 'defu'
 import { computed, ref } from 'vue'
@@ -19,16 +20,10 @@ interface RuntimeAuthConfig {
 }
 
 export function useAuth() {
-  const url = useRequestURL()
   const headers = import.meta.server ? useRequestHeaders() : undefined
 
-  const client = createAuthClient({
-    baseURL: url.origin,
-    plugins: [],
-    fetchOptions: {
-      headers,
-    },
-  })
+  const config = useAuthConfig()
+  const client = createAuthClient(config)
 
   const options = defu(
     useRuntimeConfig().public.auth as Partial<RuntimeAuthConfig>,
@@ -61,6 +56,7 @@ export function useAuth() {
 
     // eslint-disable-next-line no-async-promise-executor
     const promise = new Promise<void>(async (resolve) => {
+      // @ts-expect-error Bad typing
       const { data } = await client.getSession({
         fetchOptions: {
           headers,
