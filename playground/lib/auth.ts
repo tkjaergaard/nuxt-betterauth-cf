@@ -4,14 +4,14 @@
  * It is not intended for use in your application.
  */
 import { config } from '../auth/config'
-import { useAuth } from 'nuxt-betterauth-cf/auth'
+import { createAuthClientServer } from 'nuxt-betterauth-cf/auth'
 
 import type {
   D1Database,
   KVNamespace,
 } from '@cloudflare/workers-types'
 
-export const auth = useAuth(
+export const auth = createAuthClientServer(
   {} as D1Database,
   {} as KVNamespace,
   config,
