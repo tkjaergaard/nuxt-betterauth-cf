@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v1.0.12
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.11...v1.0.12)
+
+### 🏡 Chore
+
+- **release:** V1.0.11 ([1058008](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/1058008))
+- Fix typings ([c9da6ef](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/c9da6ef))
+- Add temporary types for the server ([776d22d](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/776d22d))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.11
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.10...v1.0.11)
