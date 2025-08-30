@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.13
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.12...v1.0.13)
+
+### 🏡 Chore
+
+- Add new approach to fix typings ([63ca49c](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/63ca49c))
+- Properly infer types ([79a489b](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/79a489b))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.12
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.11...v1.0.12)
