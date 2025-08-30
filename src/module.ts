@@ -4,6 +4,7 @@ import { ensureAuthConfigFile, ensureAuthFile, ensureDrizzleConfig, ensureSchema
 // Module options TypeScript interface definition
 export interface ModuleOptions {
   middleware?: boolean
+  autoload?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -14,6 +15,7 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     middleware: true,
+    autoload: false,
   },
   setup(_options, _nuxt) {
     const resolver = createResolver(import.meta.url)
@@ -26,7 +28,6 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     _nuxt.options.alias ??= {}
-    _nuxt.options.alias['#auth/config'] = rootResolver.resolve('./auth/config')
     _nuxt.options.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./runtime/config')
     _nuxt.options.alias['#auth/schemas'] = rootResolver.resolve('./db/schemas/index')
 
@@ -34,6 +35,14 @@ export default defineNuxtModule<ModuleOptions>({
     _nuxt.options.nitro.alias['#auth/config'] = rootResolver.resolve('./auth/config')
     _nuxt.options.nitro.alias['#auth/schemas'] = rootResolver.resolve('./db/schemas/index')
     _nuxt.options.nitro.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./runtime/config')
+
+    if (!_options.autoload) {
+      addImports([{
+        name: 'useAuth',
+        from: resolver.resolve('./runtime/app/composables/auth'),
+        as: 'createAuthClientComposable',
+      }])
+    }
 
     _nuxt.hook('modules:done', async () => {
       if (_nuxt.options._prepare) {
@@ -51,8 +60,10 @@ export default defineNuxtModule<ModuleOptions>({
     ensureTypesDeclarations()
 
     addServerScanDir(resolver.resolve('./runtime/server'))
-    addImportsDir(resolver.resolve('./runtime/app/composables'))
 
+    if (_options.autoload) {
+      addImportsDir(resolver.resolve('./runtime/app/composables'))
+    }
     const configFile = rootResolver.resolve('./auth/config')
 
     addImports([{

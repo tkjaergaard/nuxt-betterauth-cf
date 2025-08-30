@@ -5,7 +5,7 @@ import type {
   InferUserFromClient,
 } from 'better-auth/client'
 import { createAuthClient } from 'better-auth/client'
-import { useAuthConfig } from './useAuthConfig'
+import { useAuthConfig } from '../utils/useAuthConfig'
 
 import { defu } from 'defu'
 import { computed, ref } from 'vue'
@@ -13,17 +13,17 @@ import { computed, ref } from 'vue'
 import type {
   RouteLocationRaw,
 } from 'vue-router'
+import type { AuthClientConfig } from '../../config'
 
 interface RuntimeAuthConfig {
   redirectUserTo: RouteLocationRaw | string
   redirectGuestTo: RouteLocationRaw | string
 }
 
-export function useAuth() {
+export function useAuth<Options extends AuthClientConfig>(config?: Options) {
   const headers = import.meta.server ? useRequestHeaders() : undefined
 
-  const config = useAuthConfig()
-  const client = createAuthClient(config)
+  const client = createAuthClient(useAuthConfig(config))
 
   const options = defu(
     useRuntimeConfig().public.auth as Partial<RuntimeAuthConfig>,
@@ -87,9 +87,8 @@ export function useAuth() {
     session,
     user,
     loggedIn: computed(() => !!session.value),
-    signIn: client.signIn,
-    signUp: client.signUp,
     async signOut({ redirectTo }: { redirectTo?: RouteLocationRaw } = {}) {
+      // @ts-expect-error Bad typing
       const res = await client.signOut()
       session.value = null
       user.value = null
