@@ -1,9 +1,6 @@
 import { navigateTo, useRequestHeaders, useRuntimeConfig, useState } from '#app'
-import type {
-  ClientOptions,
-  InferSessionFromClient,
-  InferUserFromClient,
-} from 'better-auth/client'
+// Remove unused import
+import type { ComputedRef, Ref } from 'vue'
 import { createAuthClient } from 'better-auth/client'
 import { useAuthConfig } from '../utils/useAuthConfig'
 
@@ -20,7 +17,21 @@ interface RuntimeAuthConfig {
   redirectGuestTo: RouteLocationRaw | string
 }
 
-export function useAuth<Options extends AuthClientConfig>(config?: Options) {
+type CreateAuthClientType<T extends AuthClientConfig> = ReturnType<typeof createAuthClient<ReturnType<typeof useAuthConfig<T>>>>
+
+type ExtractUserType<T> = T extends { user: infer U } ? U : never
+
+type UseAuthReturn<T extends AuthClientConfig> = {
+  session: Ref<CreateAuthClientType<T>['$Infer']['Session'] | null>
+  user: Ref<ExtractUserType<CreateAuthClientType<T>['$Infer']['Session']> | null>
+  loggedIn: ComputedRef<boolean>
+  signOut: (options?: { redirectTo?: RouteLocationRaw }) => Promise<Response>
+  options: RuntimeAuthConfig
+  fetchSession: () => Promise<void>
+  client: CreateAuthClientType<T>
+}
+
+export function useAuth<Options extends AuthClientConfig>(config?: Options): UseAuthReturn<Options> {
   const headers = import.meta.server ? useRequestHeaders() : undefined
 
   const client = createAuthClient(useAuthConfig(config))
@@ -34,12 +45,12 @@ export function useAuth<Options extends AuthClientConfig>(config?: Options) {
     },
   )
 
-  const session = useState<InferSessionFromClient<ClientOptions> | null>(
+  const session = useState<typeof client.$Infer.Session | null>(
     'auth:session',
     () => null,
   )
 
-  const user = useState<InferUserFromClient<ClientOptions> | null>(
+  const user = useState<ExtractUserType<typeof client.$Infer.Session> | null>(
     'auth:user',
     () => null,
   )
