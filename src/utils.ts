@@ -38,6 +38,11 @@ export const config = defineAuthConfig()
 export const client = defineAuthClientConfig()
 `
 
+const AUTH_COMPOSABLE = `export function useAuth() {
+  return createAuthClientComposable(authClientConfig)
+}
+`
+
 export async function fileExists(filePath: string): Promise<boolean> {
   return fs.access(filePath, fs.constants.F_OK)
     .then(() => true)
@@ -170,4 +175,18 @@ export async function ensureAuthConfigFile(resolver: Resolver) {
   await fs.mkdir(resolver.resolve('./auth'), { recursive: true })
 
   fs.writeFile(path, AUTH_CONFIG_FILE, 'utf-8')
+}
+
+export async function ensureComposables(resolver: Resolver) {
+  const path = resolver.resolve('./composables/useAuth.ts')
+
+  const exists = await fileExists(path)
+
+  if (exists) {
+    return
+  }
+
+  await fs.mkdir(resolver.resolve('./composables'), { recursive: true })
+
+  fs.writeFile(path, AUTH_COMPOSABLE, 'utf-8')
 }

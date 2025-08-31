@@ -2,7 +2,7 @@ import { navigateTo, useRequestHeaders, useRuntimeConfig, useState } from '#app'
 // Remove unused import
 import type { ComputedRef, Ref } from 'vue'
 import { createAuthClient } from 'better-auth/client'
-import { useAuthConfig } from '../utils/useAuthConfig'
+import { useAuthConfig } from './useAuthConfig'
 
 import { defu } from 'defu'
 import { computed, ref } from 'vue'
@@ -31,7 +31,7 @@ type UseAuthReturn<T extends AuthClientConfig> = {
   client: CreateAuthClientType<T>
 }
 
-export function useAuth<Options extends AuthClientConfig>(config?: Options): UseAuthReturn<Options> {
+export function createAuthClientComposable<Options extends AuthClientConfig>(config?: Options): UseAuthReturn<Options> {
   const headers = import.meta.server ? useRequestHeaders() : undefined
 
   const client = createAuthClient(useAuthConfig(config))

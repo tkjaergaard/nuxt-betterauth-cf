@@ -1,10 +1,9 @@
-import { addImportsDir, addServerScanDir, createResolver, defineNuxtModule, installModule, addRouteMiddleware, hasNuxtModule, addImports } from '@nuxt/kit'
-import { ensureAuthConfigFile, ensureAuthFile, ensureDrizzleConfig, ensureSchemaFiles, ensureTypesDeclarations } from './utils'
+import { addServerScanDir, createResolver, defineNuxtModule, installModule, addRouteMiddleware, hasNuxtModule, addImports } from '@nuxt/kit'
+import { ensureAuthConfigFile, ensureAuthFile, ensureComposables, ensureDrizzleConfig, ensureSchemaFiles, ensureTypesDeclarations } from './utils'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
   middleware?: boolean
-  autoload?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -15,7 +14,6 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     middleware: true,
-    autoload: false,
   },
   setup(_options, _nuxt) {
     const resolver = createResolver(import.meta.url)
@@ -36,13 +34,10 @@ export default defineNuxtModule<ModuleOptions>({
     _nuxt.options.nitro.alias['#auth/schemas'] = rootResolver.resolve('./db/schemas/index')
     _nuxt.options.nitro.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./runtime/config')
 
-    if (!_options.autoload) {
-      addImports([{
-        name: 'useAuth',
-        from: resolver.resolve('./runtime/app/composables/auth'),
-        as: 'createAuthClientComposable',
-      }])
-    }
+    addImports([{
+      name: 'createAuthClientComposable',
+      from: resolver.resolve('./runtime/app/utils/createAuthClientComposable'),
+    }])
 
     _nuxt.hook('modules:done', async () => {
       if (_nuxt.options._prepare) {
@@ -54,6 +49,7 @@ export default defineNuxtModule<ModuleOptions>({
         ensureAuthFile(rootResolver),
         ensureSchemaFiles(rootResolver),
         ensureAuthConfigFile(rootResolver),
+        ensureComposables(rootResolver),
       ])
     })
 
@@ -61,9 +57,6 @@ export default defineNuxtModule<ModuleOptions>({
 
     addServerScanDir(resolver.resolve('./runtime/server'))
 
-    if (_options.autoload) {
-      addImportsDir(resolver.resolve('./runtime/app/composables'))
-    }
     const configFile = rootResolver.resolve('./auth/config')
 
     addImports([{
