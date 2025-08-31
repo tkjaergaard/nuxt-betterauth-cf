@@ -20,6 +20,7 @@ export default defineNuxtModule<ModuleOptions>({
     const ROOT_PATH = _nuxt.options.vite.root!
 
     let rootResolver = createResolver(ROOT_PATH)
+    const appResolver = rootResolver
 
     if (rootResolver.resolve('.').endsWith('app')) {
       rootResolver = createResolver(rootResolver.resolve('./..'))
@@ -49,7 +50,7 @@ export default defineNuxtModule<ModuleOptions>({
         ensureAuthFile(rootResolver),
         ensureSchemaFiles(rootResolver),
         ensureAuthConfigFile(rootResolver),
-        ensureComposables(rootResolver),
+        ensureComposables(appResolver),
       ])
     })
 
