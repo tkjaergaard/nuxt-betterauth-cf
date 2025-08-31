@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.15
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.14...v1.0.15)
+
+### 🏡 Chore
+
+- Fix right resolving for app ([07793fa](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/07793fa))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.14
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.13...v1.0.14)
