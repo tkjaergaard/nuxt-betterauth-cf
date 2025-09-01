@@ -1,6 +1,7 @@
 import { defineNuxtRouteMiddleware, navigateTo } from '#app'
 import { defu } from 'defu'
-import { useAuth } from '../composables/auth'
+import { authClientConfig } from '#imports'
+import { createAuthClientComposable } from '../utils/createAuthClientComposable'
 
 export default defineNuxtRouteMiddleware(async (to) => {
   if (to.path.startsWith('/api')) {
@@ -12,7 +13,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   if (to.meta?.auth === false) {
     return
   }
-  const { loggedIn, options, fetchSession } = useAuth()
+  const { loggedIn, options, fetchSession } = createAuthClientComposable(authClientConfig)
   const { only, redirectUserTo, redirectGuestTo } = defu(to.meta?.auth, options)
 
   /**
