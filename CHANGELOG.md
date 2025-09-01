@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.16
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.15...v1.0.16)
+
+### 🏡 Chore
+
+- Fix middelware ([31476c4](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/31476c4))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.15
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.14...v1.0.15)
