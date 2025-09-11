@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.18
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.17...v1.0.18)
+
+### 🏡 Chore
+
+- Update type for session ([20b77ac](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/20b77ac))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.17
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.16...v1.0.17)
