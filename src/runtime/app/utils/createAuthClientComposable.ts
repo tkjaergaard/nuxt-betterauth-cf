@@ -20,9 +20,10 @@ interface RuntimeAuthConfig {
 type CreateAuthClientType<T extends AuthClientConfig> = ReturnType<typeof createAuthClient<ReturnType<typeof useAuthConfig<T>>>>
 
 type ExtractUserType<T> = T extends { user: infer U } ? U : never
+type ExtractSessionType<T> = T extends { session: infer S } ? S : never
 
 type UseAuthReturn<T extends AuthClientConfig> = {
-  session: Ref<CreateAuthClientType<T>['$Infer']['Session'] | null>
+  session: Ref<ExtractSessionType<CreateAuthClientType<T>['$Infer']['Session']> | null>
   user: Ref<ExtractUserType<CreateAuthClientType<T>['$Infer']['Session']> | null>
   loggedIn: ComputedRef<boolean>
   signOut: (options?: { redirectTo?: RouteLocationRaw }) => Promise<Response>
