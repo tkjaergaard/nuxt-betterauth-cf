@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.22
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.21...v1.0.22)
+
+### 🏡 Chore
+
+- Update imports and remove exports ([aa64f3c](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/aa64f3c))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.21
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.20...v1.0.21)
