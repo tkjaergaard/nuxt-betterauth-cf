@@ -1,6 +1,5 @@
-import { defineNuxtRouteMiddleware, navigateTo } from '#app'
+import { defineNuxtRouteMiddleware, navigateTo, authClientConfig } from '#imports'
 import { defu } from 'defu'
-import { authClientConfig } from '#imports'
 import { createAuthClientComposable } from '../utils/createAuthClientComposable'
 
 export default defineNuxtRouteMiddleware(async (to) => {

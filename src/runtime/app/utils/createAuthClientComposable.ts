@@ -1,4 +1,4 @@
-import { navigateTo, useRequestHeaders, useRuntimeConfig, useState } from '#app'
+import { navigateTo, useRequestHeaders, useRuntimeConfig, useState } from '#imports'
 // Remove unused import
 import type { ComputedRef, Ref } from 'vue'
 import { createAuthClient } from 'better-auth/client'
