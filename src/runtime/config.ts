@@ -12,6 +12,3 @@ export function defineAuthConfig<T extends AuthConfig>(config: T) {
 export function defineAuthClientConfig<T extends AuthClientConfig>(config: T) {
   return config
 }
-
-export * from './app/utils/createAuthClientComposable'
-export * from './app/utils/useAuthConfig'
