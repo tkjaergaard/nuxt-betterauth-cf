@@ -1,4 +1,4 @@
-import { useRequestHeaders, useRequestURL } from '#imports'
+import { useRequestHeaders, useRequestURL } from '#app'
 import type { AuthClientConfig } from '../../config'
 
 export function useAuthConfig<Options extends AuthClientConfig>(config?: Options) {
