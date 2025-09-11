@@ -33,7 +33,6 @@ export default defineNuxtModule<ModuleOptions>({
     _nuxt.options.nitro.alias ??= {}
     _nuxt.options.nitro.alias['#auth/config'] = rootResolver.resolve('./auth/config')
     _nuxt.options.nitro.alias['#auth/schemas'] = rootResolver.resolve('./db/schemas/index')
-    _nuxt.options.nitro.alias['nuxt-betterauth-cf/config'] = resolver.resolve('./runtime/config')
 
     addImports([{
       name: 'createAuthClientComposable',
