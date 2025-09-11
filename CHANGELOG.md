@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.19
+
+[compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.18...v1.0.19)
+
+### 🏡 Chore
+
+- Update imports from #app to #imports ([04ac2ee](https://github.com/tkjaergaard/nuxt-betterauth-cf/commit/04ac2ee))
+
+### ❤️ Contributors
+
+- Thomas Kjærgaard ([@tkjaergaard](https://github.com/tkjaergaard))
+
 ## v1.0.18
 
 [compare changes](https://github.com/tkjaergaard/nuxt-betterauth-cf/compare/v1.0.17...v1.0.18)
