@@ -40,7 +40,12 @@ export function getCloudflareBindings(event: H3Event): CloudflareBindings {
 export function useAuthServer(event: H3Event): ReturnType<typeof createAuthClientServer> {
   const { DB, KV } = getCloudflareBindings(event)
 
-  return createAuthClientServer(DB, KV, config, schemas)
+  const secret = event.context.cloudflare?.env?.BETTER_AUTH_SECRET
+
+  return createAuthClientServer(DB, KV, {
+    ...config,
+    secret,
+  }, schemas)
 }
 
 interface AuthenticatedH3Event extends H3Event {
